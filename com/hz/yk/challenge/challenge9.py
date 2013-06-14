@@ -7,7 +7,7 @@ answer url: http://www.pythonchallenge.com/pcc/return/bull.html:huge:file
 
 import Image
 
-im = Image.open("level9.d/good.jpg")
+im = Image.open("good.jpg")
 
 first_set = [146,399,163,403,170,393,169,391,166,386,170,381,170,371,170,355,169,346,167,335,170,329,170,320,170,
              310,171,301,173,290,178,289,182,287,188,286,190,286,192,291,194,296,195,305,194,307,191,312,190,316,
@@ -41,4 +41,4 @@ draw = ImageDraw.Draw(nim)
 draw.line(first_set, fill='#fff')  # 将线条设置成白色
 draw.line(second_set, fill='#fff')
 del draw
-nim.save('level9.d/level9_result.png')
+nim.save('level9_result.png')

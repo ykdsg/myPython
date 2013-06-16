@@ -11,22 +11,23 @@ answer url: http://www.pythonchallenge.com/pcc/return/5808.html
 # 1211描述前一个数21为1个2,1个1,111221描述前一个数1211为1个1,1个2,2个1
 
 #前一位数字，初始值是1
-a = '1'
+preNum = '1'
 for i in xrange(30):
     #数字指针，从0开始
     pos = 0
     #用来存放计算出来的数字
-    tmp = ''
-    str_len = len(a)
+    nextNum = ''
+    str_len = len(preNum)
+    #这里对preNum进行解析
     while pos < str_len:
         count = 1
-        while pos + 1 < str_len and a[pos] == a[pos+1]:
+        while pos + 1 < str_len and preNum[pos] == preNum[pos+1]:
             count += 1
             pos += 1
 
-        tmp += '%d%s' % (count, a[pos])
+        nextNum += '%d%s' % (count, preNum[pos])
         pos += 1
+    #进行下一次循环
+    preNum = nextNum
 
-    a = tmp
-
-print len(a)
+print len(preNum)

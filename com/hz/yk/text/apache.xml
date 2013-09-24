@@ -1,0 +1,23 @@
+<VirtualHost localhost:80>
+    DocumentRoot /var/www/
+    <Directory>
+        Options FollowSymLinks
+        AllowOverride None
+    </Directory>
+    ErrorLog logs/demo.neoease.com-error.log
+    LogLevel warn
+    CustomLog logs/demo.neoease.com-access.log common
+    ServerSignature On
+</VirtualHost>
+
+<VirtualHost local2:80>
+DocumentRoot /var/www2/
+<Directory>
+    Options FollowSymLinks
+    AllowOverride None
+</Directory>
+ErrorLog logs/demo.neoease.com-error2.log
+LogLevel warn
+CustomLog logs/demo.neoease.com-access2.log common
+ServerSignature On
+</VirtualHost>

@@ -1,5 +1,6 @@
 import json
 import re
+import time
 
 import requests
 
@@ -36,8 +37,8 @@ def write_to_file(content):
         f.write(json.dumps(content, ensure_ascii=False) + '\n')
 
 
-def main():
-    url = 'http://maoyan.com/board/4'
+def main(offset):
+    url = 'http://maoyan.com/board/4?offset=' + str(offset)
     html = get_one_page(url)
     print(html)
 
@@ -47,4 +48,6 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    for i in range(10):
+        main(offset=i + 1 * 10)
+        time.sleep(1)

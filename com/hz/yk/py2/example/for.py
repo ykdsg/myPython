@@ -1,4 +1,6 @@
-for i in range(1,5):
-	print i
-else:
-		print 'The for loop is over'
+a = 'xyzwd'
+b = list(a)
+s = ''
+for i in range(0, len(b), 2):
+	s = s + b[i]
+print(s)

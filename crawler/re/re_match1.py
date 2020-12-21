@@ -7,6 +7,7 @@ import re
 # print(result.group())
 # print(result.span())
 
+# 提取对应的内容
 content = 'Hello 1234567 World_This is a Regex Demo'
 result = re.match('^Hello\s(\d+)\sWorld', content)
 print(result)

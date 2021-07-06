@@ -18,6 +18,7 @@ class LinkedQueue:
         # 当前队列大小
         self.num = 0
 
+    # 针对这个场景有哨兵的队列还是没有哨兵的队列更简单一点
     def enqueue(self, item: str) -> bool:
         if self.num >= self.capacity:
             return False

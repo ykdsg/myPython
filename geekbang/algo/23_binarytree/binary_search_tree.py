@@ -1,5 +1,6 @@
 import math
 from queue import Queue
+from typing import Optional
 
 
 class TreeNode:
@@ -7,12 +8,12 @@ class TreeNode:
         self.val = val
         self.left = None
         self.right = None
-        self.parent = None
+        self.parent: Optional[TreeNode] = None
 
 
 class BinarySearchTree:
-    def __init__(self, val_list=[]):
-        self.root = None
+    def __init__(self, val_list: [int]):
+        self.root: Optional[TreeNode] = None
         for n in val_list:
             self.insert(n)
 
@@ -45,7 +46,7 @@ class BinarySearchTree:
 
         return True
 
-    def search(self, data):
+    def search(self, data: int):
         """
         搜索
         返回bst中所有值为data的节点列表
@@ -68,7 +69,7 @@ class BinarySearchTree:
 
         return ret
 
-    def delete(self, data):
+    def delete(self, data: int):
         """
         删除
         :param data:
@@ -96,7 +97,7 @@ class BinarySearchTree:
         :param data:
         :return:
         """
-        # 1
+        # 1 没有子节点：直接删除N的父节点指针，需要判断是左还是右
         if node.left is None and node.right is None:
             # 情况1和2，根节点和普通节点的处理方式不同
             if node == self.root:
@@ -108,7 +109,8 @@ class BinarySearchTree:
                     node.parent.right = None
 
                 node.parent = None
-        # 2
+        # 2 有一个子节点：将N父节点指针指向N的子节点
+        # 2.1 仅有一个右节点
         elif node.left is None and node.right is not None:
             if node == self.root:
                 self.root = node.right
@@ -123,6 +125,7 @@ class BinarySearchTree:
                 node.right.parent = node.parent
                 node.parent = None
                 node.right = None
+        # 2.2 仅有一个左节点
         elif node.left is not None and node.right is None:
             if node == self.root:
                 self.root = node.left
@@ -137,10 +140,11 @@ class BinarySearchTree:
                 node.left.parent = node.parent
                 node.parent = None
                 node.left = None
-        # 3
+        # 3 有两个子节点：找到右子树的最小节点M，将值赋给N，然后删除M
         else:
             min_node = node.right
-            # 找到右子树的最小值节点
+            # 这里是另一种算法，找到右子树的左节点，进行替换，接着对这个节点进行同样的递归操作。
+            # 还有一种做法是直接走到右子树的最小节点，进行替换，就不用递归操作了
             if min_node.left:
                 min_node = min_node.left
 
@@ -151,6 +155,38 @@ class BinarySearchTree:
             else:
                 self._del(min_node)
                 self._del(node)
+                
+    # 这个比较简洁，但是没有那么好懂
+    def delete2(self, value: int):
+        node: TreeNode = self.root
+        parent = None
+        # 找到要删除的节点
+        while node and node.val != value:
+            parent = node
+            node = node.left if node.val > value else node.right
+
+        if not node: return
+
+        # 要删除的节点有两个子节点
+        if node.left and node.right:
+            # 找到右子树的最小节点，就是最左边的那个节点（不一定是子节点，可能有右子树）
+            successor: TreeNode = node.right
+            successor_parent = node
+            while successor.left:
+                successor_parent = successor
+                successor = successor.left
+            node.val = successor.val
+            parent, node = successor_parent, successor
+
+        # 删除节点是叶子节点或者仅有一个子节点
+        child = node.left if node.left else node.right
+
+        if not parent:
+            self.root = child
+        elif parent.left == node:
+            parent.left = child
+        else:
+            parent.right = child
 
     def get_min(self):
         """
@@ -260,30 +296,34 @@ class BinarySearchTree:
 
 
 if __name__ == '__main__':
-    nums = [4, 2, 5, 6, 1, 7, 3]
+    nums = [20, 40, 90, 50, 60, 55, 51, 56, 61, 10, 70, 30, 45]
     bst = BinarySearchTree(nums)
     print(bst)
 
     # 插入
-    bst.insert(1)
-    bst.insert(4)
+    # bst.insert(10)
+    # bst.insert(40)
+    print(bst)
+
+    bst.delete(50)
+
     print(bst)
 
     # 搜索
-    for n in bst.search(2):
-        print(n.parent.val, n.val)
-
-    # 删除
-    bst.insert(6)
-    bst.insert(7)
-    print(bst)
-    bst.delete(7)
-    print(bst)
-    bst.delete(6)
-    print(bst)
-    bst.delete(4)
-    print(bst)
-
-    # min max
-    print(bst.get_max())
-    print(bst.get_min())
+    # for n in bst.search(2):
+    #     print(n.parent.val, n.val)
+    #
+    # # 删除
+    # bst.insert(6)
+    # bst.insert(7)
+    # print(bst)
+    # bst.delete(7)
+    # print(bst)
+    # bst.delete(6)
+    # print(bst)
+    # bst.delete(4)
+    # print(bst)
+    #
+    # # min max
+    # print(bst.get_max())
+    # print(bst.get_min())

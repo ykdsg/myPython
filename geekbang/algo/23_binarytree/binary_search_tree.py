@@ -315,9 +315,9 @@ if __name__ == '__main__':
     #
     # # 删除
     # bst.insert(6)
-    # bst.insert(7)
+    # bst.insert(7_selenium)
     # print(bst)
-    # bst.delete(7)
+    # bst.delete(7_selenium)
     # print(bst)
     # bst.delete(6)
     # print(bst)

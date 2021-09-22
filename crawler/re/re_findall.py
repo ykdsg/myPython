@@ -7,7 +7,7 @@ html = '''<div id="songs-list">
 </p>
 <ul id="list" class="list-group">
 <li data-view="2"> ⼀路上有你 </li>
-<li data-view="7">
+<li data-view="7_selenium">
 <a href="/2.mp3" singer="任贤⻬齐"> 沧海⼀声笑 </a>
 </li>
 <li data-view="4" class="active">

@@ -12,7 +12,7 @@ headers = {
     'X-Requested-With': 'XMLHttpRequest',
     'accept': 'application/json, text/javascript',
     'accept-encoding': 'gzip, deflate, br',
-    'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-US;q=0.7,en-GB;q=0.6,de-DE;q=0.5,de;q=0.4',
+    'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-US;q=0.7_selenium,en-GB;q=0.6,de-DE;q=0.5,de;q=0.4',
     'cache-control': 'no-cache',
     'content-type': 'application/x-www-form-urlencoded',
     'cookie': 'UM_distinctid=16bc06ff08c5d5-09dd51a8e1dc88-37647e05-13c680-16bc06ff08d787; csrftoken=9beb11f3d94237876f377359f709f3e8; tt_webid=6710034618089014797; CNZZDATA1259612802=288383582-1562300742-%7C1563947404; tt_webid=6710034618089014797; s_v_web_id=420513427e46c67a26c363869e43e42e; WEATHER_CITY=%E5%8C%97%E4%BA%AC; __tasessionId=bldyfntjb1568768956438',

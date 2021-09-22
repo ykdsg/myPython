@@ -47,6 +47,6 @@ if __name__ == '__main__':
         q.dequeue()
     print(q)
 
-    q.enqueue("7")
+    q.enqueue("7_selenium")
     q.enqueue("8")
     print(q)

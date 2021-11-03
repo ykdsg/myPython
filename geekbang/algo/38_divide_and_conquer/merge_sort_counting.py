@@ -12,7 +12,7 @@ def merge(nums, start, mid, end):
             tmp.append(nums[a_cursor])
             a_cursor += 1
         else:
-            # 统计start-mid之间，比num[a_cursor]大的元素个数
+            # 统计start-mid之间，比num[b_cursor]大的元素个数
             inversion_num += mid - a_cursor + 1
             tmp.append(nums[b_cursor])
             b_cursor += 1
@@ -21,7 +21,7 @@ def merge(nums, start, mid, end):
         tmp.append(nums[a_cursor])
         a_cursor += 1
 
-    while (b_cursor < end):
+    while (b_cursor <= end):
         tmp.append(nums[b_cursor])
         b_cursor += 1
 
@@ -30,7 +30,7 @@ def merge(nums, start, mid, end):
 
 
 def merge_sort_counting(nums: list, start: int, end: int):
-    if start > end:
+    if start >= end:
         return
     mid: int = (start + end) // 2
     merge_sort_counting(nums, start, mid)

@@ -10,5 +10,5 @@ is a Regex Demo
 # print(result.group(1))
 
 # re.S 的作用是使. 匹配包括换行符在内的所有字符
-result = re.match('^He.*?(\d+).*?Demo$', content, re.S)
-print(result.group(1))
+queen_list = re.match('^He.*?(\d+).*?Demo$', content, re.S)
+print(queen_list.group(1))

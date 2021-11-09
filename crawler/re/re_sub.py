@@ -28,5 +28,5 @@ html = '''<div id="songs-list">
 html = re.sub('<a.*?>|</a>', '', html)
 print(html)
 results = re.findall('<li.*?>(.*?)</li>', html, re.S)
-for result in results:
-    print(result.strip())
+for queen_list in results:
+    print(queen_list.strip())

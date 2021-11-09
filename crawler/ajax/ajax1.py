@@ -44,5 +44,5 @@ if __name__ == '__main__':
     for page in range(1, 11):
         json = get_page(page)
         results = parse_page(json)
-        for result in results:
-            print(result)
+        for queen_list in results:
+            print(queen_list)

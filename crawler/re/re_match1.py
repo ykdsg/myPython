@@ -9,7 +9,7 @@ import re
 
 # 提取对应的内容
 content = 'Hello 1234567 World_This is a Regex Demo'
-result = re.match('^Hello\s(\d+)\sWorld', content)
-print(result)
-print(result.group(1))
-print(result.span())
+queen_list = re.match('^Hello\s(\d+)\sWorld', content)
+print(queen_list)
+print(queen_list.group(1))
+print(queen_list.span())

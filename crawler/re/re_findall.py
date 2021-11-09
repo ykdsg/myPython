@@ -23,6 +23,6 @@ results = re.findall('<li.*?href="(.*?)".*?singer="(.*?)">(.*?)</a>', html, re.S
 print(results)
 print(type(results))
 
-for result in results:
-    print(result)
-    print(result[0], result[1], result[2])
+for queen_list in results:
+    print(queen_list)
+    print(queen_list[0], queen_list[1], queen_list[2])

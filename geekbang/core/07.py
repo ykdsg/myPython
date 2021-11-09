@@ -24,14 +24,14 @@ values = [['jason', '2000-01-01', 'male'],
           ['nancy', '2001-02-01', 'female']
           ]
 
-result = []
+queen_list = []
 for va in values:
     dic = {}
     for i in range(0, len(attributes)):
         dic[attributes[i]] = va[i]
-    result.append(dic)
+    queen_list.append(dic)
 
-print(result)
+print(queen_list)
 
 result2 = [{attributes[i]: va[i] for i in range(len(attributes))} for va in values]
 print(result2)

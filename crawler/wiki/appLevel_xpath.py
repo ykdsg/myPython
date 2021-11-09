@@ -28,10 +28,10 @@ if __name__ == '__main__':
     results = html.xpath('//tr/td[@class="confluenceTd"]/..')
     appLevels = []
 
-    for result in results:
+    for queen_list in results:
         # 指定类型，方便ide提示
-        assert isinstance(result, etree._Element)
-        tds = result.xpath('/td')  # type:etree._Element
+        assert isinstance(queen_list, etree._Element)
+        tds = queen_list.xpath('/td')  # type:etree._Element
 
         rowspan = tds[0].get('rowspan')
         if rowspan:

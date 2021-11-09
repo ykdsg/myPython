@@ -11,8 +11,8 @@ student = {
     'gender': 'male'
 }
 # 已经不推荐使用，需要使用insert_one
-result = collection.insert(student)
-print(result)
+queen_list = collection.insert(student)
+print(queen_list)
 
 student1 = {
     'id': '20170101',
@@ -27,6 +27,6 @@ student2 = {
     'age': 21,
     'gender': 'male'
 }
-result = collection.insert_many([student1, student2])
-print(result)
-print(result.inserted_ids)
+queen_list = collection.insert_many([student1, student2])
+print(queen_list)
+print(queen_list.inserted_ids)

@@ -2,8 +2,8 @@ import tesserocr
 from PIL import Image
 
 image = Image.open('code.jpg')
-result = tesserocr.image_to_text(image)
-print(result)
+queen_list = tesserocr.image_to_text(image)
+print(queen_list)
 
 # 将图片转化为灰度图像
 image = image.convert('L')
@@ -21,5 +21,5 @@ for i in range(256):
 
 image = image.point(table, '1')
 image.show()
-result = tesserocr.image_to_text(image)
-print(result)
+queen_list = tesserocr.image_to_text(image)
+print(queen_list)

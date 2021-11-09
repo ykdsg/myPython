@@ -19,6 +19,7 @@ def check_weight(current_index: int, current_weight: int, items: list, count: in
 
     # 如果条件允许，当前物品放入的情况
     next_weight = current_weight + items[current_index]
+    # 如果已经超过了背包的承重，就不需要进一步探索了
     if next_weight <= package_weight:
         item_list[current_index] = 1
         check_weight(current_index + 1, next_weight, items, count, package_weight)

@@ -19,8 +19,9 @@ def check_weight(items: list, max_weight: int) -> int:
     for i in range(1, item_count):
         # 这里就不用考虑第i个物品不放的情况，因为1维的数组相当于已经继承了。
         # 将第i个物品放入的时候，可能存在的情况，这里需要+1，因为rang 不包括最后一位
-        # 这里处理了下，因为最终不可以超过max_weight ，只考察 max_weight - items[i] 之前的数据才有意义
-        for j in range(max_weight - items[i] + 1):
+        # 这里跟2维数组的时候不太一样，j需要从大到小，如果从小到大，会存在当前的决策影响后面的决策。
+        # 比如j=0 ，i=2，items[2]=3, memo[0]==1, 那么memo[0+3]=1 , 当后面j=3 的时候，会发现memo[3]==1 ,但这个结果并不是由上一层决策得来的。而是由本层的前几次决策得来的，并不能用在本层的决策里面。所以这里从大到小的话，就可以规避本层决策相互之间的影响。
+        for j in range(max_weight - items[i], -1, -1):
             if memo[j] == 1:
                 memo[j + items[i]] = 1
 
@@ -34,5 +35,5 @@ def check_weight(items: list, max_weight: int) -> int:
 if __name__ == '__main__':
     # [weight, ...]
     items_info = [2, 2, 4, 6, 3]
-    capacity = 9
-    print(check_weight(items_info, capacity))
+    max_weight = 9
+    print(check_weight(items_info, max_weight))

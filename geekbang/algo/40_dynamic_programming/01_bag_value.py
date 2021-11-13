@@ -8,7 +8,7 @@ def check_weight(items: list, item_values: list, max_weight: int) -> int:
     for i in range(1, item_count):
         # 不把第i个物品放入的时候，相当于直接继承上一层的数据
         for j in range(max_weight + 1):
-            if memo[i - 1][j] != 0 and memo[i - 1][j] > memo[i][j]:
+            if memo[i - 1][j] > 0 and memo[i - 1][j] > memo[i][j]:
                 memo[i][j] = memo[i - 1][j]
 
         # 将第i个物品放入的时候，可能存在的情况，这里需要+1，因为rang 不包括最后一位

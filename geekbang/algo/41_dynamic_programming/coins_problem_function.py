@@ -1,5 +1,8 @@
-# 这个解法就很像回溯+缓存
+# 状态转移方程，这个解法就很像回溯+缓存
 def min_coin_num(price: int, memo: [int], coins: [int]) -> int:
+    if price == 0:
+        return 0
+
     # 如果刚好等于面额直接返回
     if price in coins:
         return 1
@@ -7,15 +10,14 @@ def min_coin_num(price: int, memo: [int], coins: [int]) -> int:
     if memo[price] > 0:
         return memo[price]
 
-    pre_temp = []
+    pre_min_coin = 999999
     for coin in coins:
         if price < coin:
             continue
-        pre_temp.append(min_coin_num(price - coin, memo, coins))
+        else:
+            pre_min_coin = min(pre_min_coin, min_coin_num(price - coin, memo, coins))
 
-    pre_step = min(pre_temp)
-
-    current_step = pre_step + 1
+    current_step = pre_min_coin + 1
     memo[price] = current_step
     return current_step
 

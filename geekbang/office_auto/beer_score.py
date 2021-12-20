@@ -58,6 +58,7 @@ def read_file(file_source: str):
     beers: List[Beer] = []
     for line in range(3, table.nrows):
         hidden = table.rowinfo_map[line].hidden
+        # 是否需要过滤隐藏行
         if hidden:
             continue
 

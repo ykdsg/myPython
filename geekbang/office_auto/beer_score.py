@@ -44,12 +44,13 @@ def calc_unit_score(price: float, score: float) -> float:
 
 
 def read_file(file_source: str):
-    work_book = xlrd.open_workbook(file_source, formatting_info=True)
+    # work_book = xlrd.open_workbook(file_source, formatting_info=True)
+    work_book = xlrd.open_workbook(file_source)
     table: Sheet = work_book.sheet_by_index(0)
 
-    re_score_pattern1 = re.compile(r'Untappd.*?([0-9]*\.[0-9]+|[0-9]+)')
-    re_score_pattern2 = re.compile(r'Un评分.*?([0-9]*\.[0-9]+|[0-9]+)')
-    re_score_pattern3 = re.compile(r'UT.*?([0-9]*\.[0-9]+|[0-9]+)')
+    re_score_pattern1 = re.compile(r'.*Untappd.*?([0-9]*\.[0-9]+|[0-9]+)')
+    re_score_pattern2 = re.compile(r'.*Un评分.*?([0-9]*\.[0-9]+|[0-9]+)')
+    re_score_pattern3 = re.compile(r'.*UT.*?([0-9]*\.[0-9]+|[0-9]+)')
     re_patterns: List[Pattern] = []
     re_patterns.append(re_score_pattern1)
     re_patterns.append(re_score_pattern2)
@@ -57,10 +58,10 @@ def read_file(file_source: str):
 
     beers: List[Beer] = []
     for line in range(3, table.nrows):
-        hidden = table.rowinfo_map[line].hidden
         # 是否需要过滤隐藏行
-        if hidden:
-            continue
+        # hidden = table.rowinfo_map[line].hidden
+        # if hidden:
+        #     continue
 
         name = table.cell(line, 2).value
         beer_type = table.cell(line, 1).value
@@ -109,7 +110,7 @@ def write_to_file(beers: List[Beer]):
 
 
 # 识别行是否隐藏，只支持xls
-original_file = "/Users/ykdsg/Downloads/beer-12.06.xls"
+original_file = "/Users/ykdsg/Downloads/beer-12.21.xlsx"
 if __name__ == '__main__':
     beers = read_file(original_file)
     beers.sort(key=lambda beer: beer.unit_score, reverse=True)

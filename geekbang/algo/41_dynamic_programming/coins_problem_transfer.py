@@ -2,7 +2,6 @@
 from typing import List
 
 
-# 使用这个方法的前提是coins 必须是按升序排好的
 def min_coin_num(price: int, coins: List[int]):
     # 这里初始化memo，理论上硬币的个数不会超过price 的面额（最大个数就是都用1元硬币来组成）
     memo = [price] * (price + 1)

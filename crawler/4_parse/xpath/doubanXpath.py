@@ -1,3 +1,4 @@
+import string
 from typing import List
 from urllib import request
 from urllib.error import HTTPError, URLError
@@ -17,25 +18,40 @@ url = 'https://www.douban.com/search?q=on+java&cat=1001'
 
 
 def requestByUrllib():
+    html = requestUrl()
+    res = parseStructure(html)
+    print(res)
+
+
+def parseStructure(html: str) -> List:
+    res = []
+    if html is None or len(html) == 0:
+        return res
+    elementTree: _ElementTree = etree.HTML(html)
+    resultList: List[_ElementTree] = elementTree.xpath('//div[@class="result-list"]/div[@class="result"]/div[2]/div')
+    for result in resultList:
+        item = dict()
+        item['name'] = result.xpath('./h3/a/text()')[0]
+        item[' book_url'] = result.xpath('./h3/a/@href')[0]
+        item['rating_num'] = result.xpath('./div/span[2]/text()')[0]
+        item['sub_title'] = result.xpath('./div/span[@class="subject-cast"]/text()')[0]
+        res.append(item)
+
+    return res
+
+
+def requestUrl() -> str:
     req = request.Request(url=url, headers=headers, method='GET')
     try:
         response = request.urlopen(req)
     except HTTPError as e:
         print(e.reason, e.code, e.headers, sep='\n')
-        return
+        return ''
     except URLError as e:
         print(e.reason)
-        return
+        return ''
     html = response.read().decode('utf-8', "ignore")
-    elementTree: _ElementTree = etree.HTML(html)
-    resultList: List[_ElementTree] = elementTree.xpath('//div[@class="result-list"]/div[@class="result"]/div[2]/div')
-    for result in resultList:
-        name = result.xpath('./h3/a/text()')[0]
-        book_url = result.xpath('./h3/a/@href')[0]
-        rating_num = result.xpath('./div/span[2]/text()')[0]
-        # 这个比较坑，页面上可能没有分数，导致这里需要判断下
-        sub_title = result.xpath('./div/span[@class="subject-cast"]/text()')[0]
-        print('name=%s,url=%s,rating_num=%s,sub_title=%s' % (name, book_url, rating_num, sub_title))
+    return html
 
 
 if __name__ == '__main__':

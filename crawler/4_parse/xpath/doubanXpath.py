@@ -1,5 +1,5 @@
 import string
-from typing import List
+from typing import List, Dict
 from urllib import request
 from urllib.error import HTTPError, URLError
 
@@ -23,18 +23,31 @@ def requestByUrllib():
     print(res)
 
 
-def parseStructure(html: str) -> List:
+class ItemInfo():
+    def __init__(self):
+        self.name = ''
+        self.url = ''
+        self.ratingNum = ''
+        self.subTitle = ''
+        self.imgUrl = ''
+
+    def __repr__(self):
+        return ' '.join('%s' % item for item in self.__dict__.values())
+
+
+def parseStructure(html: str) -> List[ItemInfo]:
     res = []
     if html is None or len(html) == 0:
         return res
     elementTree: _ElementTree = etree.HTML(html)
-    resultList: List[_ElementTree] = elementTree.xpath('//div[@class="result-list"]/div[@class="result"]/div[2]/div')
+    resultList: List[_ElementTree] = elementTree.xpath('//div[@class="result-list"]/div[@class="result"]')
     for result in resultList:
-        item = dict()
-        item['name'] = result.xpath('./h3/a/text()')[0]
-        item[' book_url'] = result.xpath('./h3/a/@href')[0]
-        item['rating_num'] = result.xpath('./div/span[2]/text()')[0]
-        item['sub_title'] = result.xpath('./div/span[@class="subject-cast"]/text()')[0]
+        item = ItemInfo()
+        item.imgUrl = result.xpath('./div[@class="pic"]/a/img/@src')[0]
+        item.name = result.xpath('./div[2]/div/h3/a/text()')[0]
+        item.url = result.xpath('./div[2]/div/h3/a/@href')[0]
+        item.ratingNum = result.xpath('./div[2]/div/div/span[2]/text()')[0]
+        item.subTitle = result.xpath('./div[2]/div/div/span[@class="subject-cast"]/text()')[0]
         res.append(item)
 
     return res

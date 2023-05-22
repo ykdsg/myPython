@@ -35,7 +35,7 @@ def demo():
         model="gpt-3.5-turbo",
         messages=messages
     )
-    reply = response["choices"][0]["message"]["content"]
+    reply = response["choices"][0]["jmessage"]["content"]
     print(reply)
 
 

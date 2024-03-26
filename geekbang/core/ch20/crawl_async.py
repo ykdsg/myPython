@@ -23,11 +23,14 @@ async def crawl_page(url):
 
 async def main(urls):
     for url in urls:
+        # 同步调用，在当前调用结束前不会触发下一次调用
         await crawl_page(url)
 
 
 async def main2(urls):
+    # 任务创建后很快就 会被调度执行
     tasks = [asyncio.create_task(crawl_page(url)) for url in urls]
+    # 等所有任务都结束
     for task in tasks:
         await task
 
@@ -39,6 +42,7 @@ async def main3(urls):
 
 
 start = time.time()
+# 需要 asyncio.run 来触发运行
 asyncio.run(main(['url_1', 'url_2', 'url_3', 'url_4']))
 end1 = time.time()
 print('cost {}'.format(end1 - start))

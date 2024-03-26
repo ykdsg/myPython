@@ -1,4 +1,4 @@
-from geekbang.core.ch13.utils.class_utils import *
+from utils.class_utils import *
 
 encoder = Encoder()
 decoder = Decoder()

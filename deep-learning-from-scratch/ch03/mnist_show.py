@@ -16,8 +16,11 @@ img = x_train[0]
 label = t_train[0]
 print(label)  # 5
 
+x_batch = x_train[0:100]
+print(x_batch.shape)
+
 print(img.shape)  # (784,)
 img = img.reshape(28, 28)  # 把图像的形状变为原来的尺寸
 print(img.shape)  # (28, 28)
 
-img_show(img)
+# img_show(img)

@@ -36,7 +36,8 @@ def softmax(x):
         return y.T 
 
     x = x - np.max(x) # 溢出对策
-    return np.exp(x) / np.sum(np.exp(x))
+    result = np.exp(x) / np.sum(np.exp(x))
+    return result
 
 
 def mean_squared_error(y, t):

@@ -5,7 +5,6 @@ import matplotlib.pylab as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 
-# %%
 def _numerical_gradient_no_batch(f, x):
     h = 1e-4 # 0.0001
     grad = np.zeros_like(x)
@@ -52,24 +51,15 @@ def tangent_line(f, x):
 if __name__ == '__main__':
     x0 = np.arange(-2, 2.5, 0.25)
     x1 = np.arange(-2, 2.5, 0.25)
-    # meshgrid 网格化函数，将x0 作为行进行扩展，行数是x1 长度，将x1 作为列进行列扩展，列数是x0 长度
     X, Y = np.meshgrid(x0, x1)
-
-    # 将多维数组 X 转换为一维数组
+    
     X = X.flatten()
     Y = Y.flatten()
-
-    arrayX = np.array([X, Y])
-    print("arrayX shape ", arrayX.shape)
-    grad = numerical_gradient(function_2, arrayX)
+    
+    grad = numerical_gradient(function_2, np.array([X, Y]) )
     
     plt.figure()
-    U = -grad[0]
-    V = -grad[1]
-    # plt.quiver(X, Y, U, V, **kwargs)
-    # X, Y：箭头起点的坐标（网格点位置）。
-    # U, V：箭头的方向分量（分别对应 x 和 y 方向，通过numerical_gradient函数进行计算得出）。
-    plt.quiver(X, Y, U, V, angles="xy", color="#666666")  # ,headwidth=10,scale=40,color="#444444")
+    plt.quiver(X, Y, -grad[0], -grad[1],  angles="xy",color="#666666")#,headwidth=10,scale=40,color="#444444")
     plt.xlim([-2, 2])
     plt.ylim([-2, 2])
     plt.xlabel('x0')

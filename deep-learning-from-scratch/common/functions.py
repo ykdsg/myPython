@@ -43,6 +43,7 @@ def mean_squared_error(y, t):
     return 0.5 * np.sum((y-t)**2)
 
 
+# 交叉熵损失函数
 def cross_entropy_error(y, t):
     if y.ndim == 1:
         t = t.reshape(1, t.size)
@@ -53,6 +54,7 @@ def cross_entropy_error(y, t):
         t = t.argmax(axis=1)
              
     batch_size = y.shape[0]
+    # y[np.arange(batch_size), t] 表示按样本索引和对应的标签索引提取 y 中的值，即取出每个样本在正确标签位置的预测概率。
     return -np.sum(np.log(y[np.arange(batch_size), t] + 1e-7)) / batch_size
 
 

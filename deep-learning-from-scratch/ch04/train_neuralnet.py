@@ -46,6 +46,13 @@ for i in range(iters_num):
         print("train acc, test acc | " + str(train_acc) + ", " + str(test_acc))
 
 # 绘制图形
+# 损失函数变化曲线
+train_loss_slice = train_loss_list[::10]
+x = np.arange(len(train_loss_slice))
+plt.plot(x, train_loss_slice, label="train_loss_list")
+plt.show()
+
+# 准确率变化曲线
 markers = {'train': 'o', 'test': 's'}
 x = np.arange(len(train_acc_list))
 plt.plot(x, train_acc_list, label='train acc')

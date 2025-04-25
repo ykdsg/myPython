@@ -51,11 +51,30 @@ def cross_entropy_error(y, t):
         
     # 监督数据是one-hot-vector的情况下，转换为正确解标签的索引
     if t.size == y.size:
+        # np.argmax 回数组中最大值的索引, axis=1 表示把列这个维度干掉，也就是按照行进行max计算
         t = t.argmax(axis=1)
              
     batch_size = y.shape[0]
     # y[np.arange(batch_size), t] 表示按样本索引和对应的标签索引提取 y 中的值，即取出每个样本在正确标签位置的预测概率。
     return -np.sum(np.log(y[np.arange(batch_size), t] + 1e-7)) / batch_size
+
+
+def cross_entropy_error_practice1(y, t):
+    if y.ndim == 1:
+        y = np.reshape(1, y.size)
+        t = np.reshape(1, t.size)
+
+    # 标签t 如果是 one-hot形式需要转换
+    if y.size == t.size:
+        t = np.argmax(t, axis=1)
+
+    batch_size = y.shape[0]
+    return -np.sum(np.log(y[np.arange(batch_size), t] + 1e-7)) / batch_size
+
+
+
+
+
 
 
 def softmax_loss(X, t):

@@ -26,6 +26,7 @@ t = np.array([0, 0, 1])
 net = simpleNet()
 
 f = lambda w: net.loss(x, t)
+# 计算损失函数梯度
 # 这里实际通过类变量进行传递，并不是通过函数入参
 dW = numerical_gradient(f, net.W)
 

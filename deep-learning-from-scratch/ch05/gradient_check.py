@@ -13,6 +13,7 @@ network = TwoLayerNet(input_size=784, hidden_size=50, output_size=10)
 x_batch = x_train[:3]
 t_batch = t_train[:3]
 
+# 梯度确认：通过数值微分结果与误差反向传播结果进行比较，理论上应该是非常接近的
 grad_numerical = network.numerical_gradient(x_batch, t_batch)
 grad_backprop = network.gradient(x_batch, t_batch)
 

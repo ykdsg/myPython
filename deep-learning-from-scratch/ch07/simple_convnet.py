@@ -15,6 +15,16 @@ class SimpleConvNet:
     
     Parameters
     ----------
+    input_dim:  输入数据的维度：（通道，高，长）
+    conv_param——卷积层的超参数（字典）。字典的关键字如下：
+        filter_num——滤波器的数量
+        filter_size——滤波器的大小
+        stride——步幅
+        pad——填充
+    hidden_size——隐藏层（全连接）的神经元数量
+    output_size——输出层（全连接）的神经元数量
+    weitght_int_std——初始化时权重的标准差
+
     input_size : 输入大小（MNIST的情况下为784）
     hidden_size_list : 隐藏层的神经元数量的列表（e.g. [100, 100, 100]）
     output_size : 输出大小（MNIST的情况下为10）

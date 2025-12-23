@@ -1,11 +1,9 @@
-from urllib.parse import quote
-
+from pyquery import PyQuery as pq
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from pyquery import PyQuery as pq
+from selenium.webdriver.support.wait import WebDriverWait
 
 option = webdriver.ChromeOptions()
 option.add_argument("--disable-blink-features=AutomationControlled")

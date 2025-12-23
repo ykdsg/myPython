@@ -1,10 +1,10 @@
 import re
-import xlwt
 import time
-import requests
-import pandas as pd
 from concurrent.futures import ThreadPoolExecutor
-import matplotlib
+
+import pandas as pd
+import requests
+import xlwt
 
 # 参考https://blog.csdn.net/qjk19940101/article/details/79593381 ，对爬虫和数据分析有一定的参考意义
 

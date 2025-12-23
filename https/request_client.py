@@ -1,5 +1,6 @@
-import requests
 import ssl
+
+import requests
 
 # 目标服务器的IP地址和端口
 ip = '127.0.0.1'

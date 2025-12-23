@@ -1,5 +1,4 @@
 import cProfile
-import pdb
 
 
 def func():

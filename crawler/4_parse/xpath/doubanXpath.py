@@ -1,5 +1,4 @@
-import string
-from typing import List, Dict
+from typing import List
 from urllib import request
 from urllib.error import HTTPError, URLError
 

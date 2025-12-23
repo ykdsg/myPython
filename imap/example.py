@@ -22,15 +22,15 @@ parse_winmail_dat - 解析文件为winmail.dat的附件, 并下载
 """
 
 import email
-from email.header import decode_header, Header
-from email.parser import Parser
-from email.utils import parsedate_to_datetime
 import logging
 import sys
 from datetime import datetime
+from email.header import decode_header
+from email.parser import Parser
+from email.utils import parsedate_to_datetime
 
-from imapclient import IMAPClient
 import pytz
+from imapclient import IMAPClient
 
 
 def customer_imap_client(folder='INBOX') -> IMAPClient:

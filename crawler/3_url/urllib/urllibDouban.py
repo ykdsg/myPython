@@ -1,6 +1,4 @@
-import http
 import re
-from http.client import HTTPResponse
 from urllib import request
 from urllib.error import URLError, HTTPError
 

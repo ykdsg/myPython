@@ -3,3 +3,4 @@
 .env
 /geekbang/ai/data/
 !/openai/.env
+!/geekbang/ai/.env

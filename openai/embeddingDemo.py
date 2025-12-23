@@ -1,8 +1,9 @@
 import os
 
-import openai
 from dotenv import load_dotenv
 from openai.embeddings_utils import get_embedding, cosine_similarity
+
+import openai
 
 # openai textComplete例子：https://platform.openai.com/docs/quickstart/build-your-application
 

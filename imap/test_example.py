@@ -1,6 +1,6 @@
 from unittest import TestCase, main
 from unittest import mock
-from example import new_imap_client
+
 import example
 
 

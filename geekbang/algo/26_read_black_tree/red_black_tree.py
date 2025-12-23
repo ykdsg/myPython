@@ -1,6 +1,3 @@
-from queue import Queue
-import random
-
 OUTPUT_PATH = '/Users/ykdsg/Downloads'
 
 

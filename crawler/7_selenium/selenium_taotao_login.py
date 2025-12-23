@@ -1,9 +1,9 @@
+from pyquery import PyQuery as pq
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from pyquery import PyQuery as pq
+from selenium.webdriver.support.wait import WebDriverWait
 
 # 配置chrome 参数，加上登录可以实现数据的爬取
 

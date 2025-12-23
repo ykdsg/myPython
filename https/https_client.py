@@ -1,6 +1,7 @@
-import aiohttp
 import asyncio
 import ssl
+
+import aiohttp
 
 
 # 这种方式没办法传递server_name ，除非关闭check hostname ，否则会报错

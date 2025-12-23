@@ -1,9 +1,10 @@
-import requests
-from urllib.parse import urlencode
-import time
 import os
+import time
 from hashlib import md5
 from multiprocessing.pool import Pool
+from urllib.parse import urlencode
+
+import requests
 
 headers = {
     'Referer': 'https://www.toutiao.com/search/?keyword=%E8%A1%97%E6%8B%8D',

@@ -1,6 +1,8 @@
 import os
-import openai
+
 from dotenv import load_dotenv
+
+import openai
 
 # openai chatComplete例子
 

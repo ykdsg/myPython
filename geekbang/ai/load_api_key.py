@@ -1,5 +1,6 @@
 # import 就执行
-import os, openai
+import openai
+import os
 
 from dotenv import load_dotenv
 

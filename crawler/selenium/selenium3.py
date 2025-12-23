@@ -1,5 +1,6 @@
-from selenium import webdriver
 import time
+
+from selenium import webdriver
 
 # 淘宝有反selenum的逻辑，点击的时候会跳去登录
 chrome_option = webdriver.ChromeOptions()
